@@ -21,6 +21,8 @@
     <script>
         const API_BASE = 'https://coffee-chat-agent-production.up.railway.app'; // Replace with your backend URL
         
+        let conversationHistory = []; // Track conversation
+
         async function sendMessage() {
             const input = document.getElementById('messageInput');
             const message = input.value.trim();
@@ -33,13 +35,21 @@
                 const response = await fetch(`${API_BASE}/api/chat`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message })
+                    body: JSON.stringify({ 
+                        message: message,
+                        conversation_history: conversationHistory  // Send history
+                    })
                 });
                 
                 const data = await response.json();
                 addMessage(data.response, 'agent');
+                
+                // Update conversation history with response
+                conversationHistory = data.conversation_history;
+                
             } catch (error) {
                 addMessage('Error: Could not connect to booking system', 'agent');
+                console.error('Error:', error);
             }
         }
         
