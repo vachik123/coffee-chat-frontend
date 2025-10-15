@@ -481,6 +481,13 @@ body {
         document.getElementById('messageInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter' && !isProcessing) sendMessage();
         });
+
+        document.getElementById('messageInput').addEventListener('focus', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
         
         window.onload = () => {
             document.getElementById('status').textContent = 'Ready';
