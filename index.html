@@ -3,7 +3,7 @@
 <head>
     <title>Vach's Coffee Chat Booking</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
         body {
@@ -310,6 +310,25 @@ button {
     button {
         min-height: 45px;
         padding: 10px 16px !important;
+    }
+}
+/* Prevent mobile page jump when keyboard appears */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    .container {
+        /* Prevent layout shift when keyboard appears */
+        min-height: 100vh;
+        overflow: visible;
+    }
+    
+    /* Lock viewport height when input is focused */
+    body.keyboard-open {
+        position: fixed;
+        width: 100%;
     }
 }
     </style>
