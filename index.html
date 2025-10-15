@@ -9,25 +9,63 @@
             background: teal;
             padding: 20px;
             font-family: 'MS Sans Serif', sans-serif;
+            font-size: 21px;
+        }
+        
+        .title-bar-text,
+        .status-bar-field,
+        button,
+        input,
+        .window-body,
+        .message,
+        p,
+        a {
+            font-size: 21px !important;
+        }
+        
+        .title-bar {
+            height: auto;
+            padding: 4px;
+        }
+        
+        button {
+            padding: 8px 16px;
+        }
+        
+        input {
+            padding: 8px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
         
         .window {
-            max-width: 600px;
-            margin: 0 auto;
+            flex: 1;
+        }
+        
+        .info-window {
+            width: 280px;
+            flex-shrink: 0;
         }
         
         .chat-area {
-            height: 350px;
+            height: 400px;
             overflow-y: scroll;
             background: white;
             border: 2px inset;
-            padding: 8px;
+            padding: 12px;
             margin-bottom: 10px;
         }
         
         .message {
-            margin: 8px 0;
-            padding: 6px;
+            margin: 10px 0;
+            padding: 10px;
+            line-height: 1.4;
         }
         
         .user {
@@ -49,36 +87,55 @@
         }
         
         .time-slots {
-            margin: 10px 0;
+            margin: 12px 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         
         .input-area {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
         
         .input-area input {
             flex: 1;
         }
         
-        @media (max-width: 640px) {
-            body {
-                padding: 10px;
+        .info-content {
+            padding: 16px;
+            line-height: 1.6;
+        }
+        
+        .info-content a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+        
+        .info-content a:visited {
+            color: #800080;
+        }
+        
+        .info-content p {
+            margin: 10px 0;
+        }
+        
+        .info-content hr {
+            margin: 12px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .info-window {
+                width: 100%;
+                order: -1;
             }
             
             .chat-area {
-                height: 250px;
-            }
-            
-            .window {
-                width: 100%;
-            }
-            
-            .message {
-                font-size: 12px;
+                height: 300px;
             }
             
             .user, .agent {
@@ -86,32 +143,190 @@
                 margin-right: 20px;
             }
         }
+        body, .title-bar, .status-bar, button {
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+}
+
+body, .title-bar, .status-bar, button, .message, .info-content, .chat-area, .status-bar-field, .title-bar-text, .input-area input, .status-bar-field {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: always;
+}
+
+input[type="text"] {
+    padding: 12px 16px !important;
+    height: auto !important;
+    min-height: 50px;
+}
+
+.title-bar-controls button {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+}
+
+.title-bar {
+    height: auto !important;
+    padding: 6px !important;
+}
+
+button {
+    padding: 12px 20px !important;
+    min-height: 50px;
+}
+
+.chat-area {
+    scrollbar-width: thick;
+}
+
+.chat-area::-webkit-scrollbar {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.chat-area::-webkit-scrollbar-track {
+    background: #c0c0c0 !important;
+    border: 2px solid #dfdfdf !important;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+    background: #c0c0c0 !important;
+    border: 2px outset #dfdfdf !important;
+    box-shadow: inset 1px 1px 0 0 #fff, inset -1px -1px 0 0 #808080 !important;
+}
+
+.chat-area::-webkit-scrollbar-button {
+    width: 24px !important;
+    height: 24px !important;
+    background: #c0c0c0 !important;
+    border: 2px outset #dfdfdf !important;
+    display: block !important;
+}
+
+.chat-area::-webkit-scrollbar-button:vertical:start:decrement {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><polygon points="12,6 6,18 18,18" fill="black"/></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.chat-area::-webkit-scrollbar-button:vertical:end:increment {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><polygon points="6,6 18,6 12,18" fill="black"/></svg>') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+.title-bar-controls button {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    background-size: 16px 16px !important;
+    background-position: center !important;
+}
+
+.title-bar-controls button:before {
+    transform: scale(1.5);
+}
+
+.title-bar-controls button:after {
+    transform: scale(1.5);
+}
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-window,
+.coffee-window {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        order: -1;
+    }
+    
+    .chat-area {
+        height: 300px;
+    }
+    
+    .user, .agent {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
     </style>
 </head>
 <body>
-    <div class="window">
-        <div class="title-bar">
-            <div class="title-bar-text">Coffee Chat Booking - Vach</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
-                <button aria-label="Close"></button>
+    <div class="container">
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">Coffee Chat-inator 3000</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
             </div>
-        </div>
-        
-        <div class="window-body">
-            <div class="chat-area" id="chat"></div>
             
-            <div class="field-row input-area">
-                <input id="messageInput" type="text" placeholder="Type a message...">
-                <button id="sendBtn" onclick="sendMessage()">Send</button>
+            <div class="window-body">
+                <div class="chat-area" id="chat"></div>
+                
+                <div class="field-row input-area">
+                    <input id="messageInput" type="text" placeholder="Type a message...">
+                    <button id="sendBtn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <p class="status-bar-field">Ready</p>
+                <p class="status-bar-field" id="status">Idle</p>
             </div>
         </div>
         
-        <div class="status-bar">
-            <p class="status-bar-field">Ready</p>
-            <p class="status-bar-field" id="status">Idle</p>
+        <div class="sidebar">
+            <div class="window info-window">
+                <div class="title-bar">
+                    <div class="title-bar-text">About</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                
+                <div class="window-body info-content">
+                    <p><strong>Built with Cohere!</strong></p>
+                    <p>This agent uses Cohere's Command-A model muahaha</p>
+                    <hr>
+                    <p><strong>Connect with Vach:</strong></p>
+                    <p><a href="https://www.linkedin.com/in/vachagan-melikian/" target="_blank">LinkedIn Profile</a></p>
+                </div>
+            </div>
+            
+            <div class="window coffee-window">
+                <div class="title-bar">
+                    <div class="title-bar-text">coffee.gif</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close"></button>
+                    </div>
+                </div>
+                
+                <div class="window-body" style="padding: 8px; text-align: center;">
+                    <img src="coffee.gif" alt="Coffee" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
         </div>
+
     </div>
 
     <script>
@@ -204,9 +419,9 @@
             if (e.key === 'Enter' && !isProcessing) sendMessage();
         });
         
-        // Welcome message
         window.onload = () => {
             document.getElementById('status').textContent = 'Ready';
+            addMessage("Hey! I'm Vach's booking assistant. I can help you schedule a 30-minute coffee chat with him. What would you like to discuss?", 'agent');
         };
     </script>
 </body>
